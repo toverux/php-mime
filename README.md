@@ -2,7 +2,7 @@
 
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/e9103654-845f-40b7-8eeb-009e49e09067.svg?style=flat-square&label=insight)](https://insight.sensiolabs.com/projects/e9103654-845f-40b7-8eeb-009e49e09067)
 
-Comprehensive MIME type mapping API, PHP clone of npm's [mime](https://www.npmjs.com/package/mime) ([broofa/node-mime](https://github.com/broofa/node-mime)). MIME database from [jshttp/mime-db](https://github.com/jshttp/mime-db).
+Comprehensive MIME type mapping API, PHP clone of [broofa/node-mime](https://github.com/broofa/node-mime). MIME database from [jshttp/mime-db](https://github.com/jshttp/mime-db).
 
 ## Install
 
@@ -22,7 +22,7 @@ use Alembic\Mime\Mime;
 ## API — Queries
 
 ### Mime::lookup($path)
-Get the mime type associated with a file, if no mime type is found `application/octet-stream` is returned. Performs a case-insensitive lookup using the extension in `path` (the substring after the last '.').  E.g.
+Get the mime type associated with a file, if no mime type is found `application/octet-stream` is returned. Performs a case-insensitive lookup using the extension in `$path` (the substring after the last '.').  E.g.
 
 ```php
 use Alembic\Mime\Mime;
