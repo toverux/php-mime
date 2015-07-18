@@ -1,0 +1,16 @@
+{
+    "name": "alembic/mime",
+    "description": "Just a port of npm's mime package",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "toverux",
+            "email": "mtouverey@alembic-dev.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Alembic\\Mime\\": "src" }
+    },
+    "require": {}
+}
