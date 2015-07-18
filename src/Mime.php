@@ -62,7 +62,7 @@ class Mime
 
     public static function load($filepath)
     {
-        if(($content = @file_get_contents($filepath)) == false) {
+        if(($content = @file_get_contents($filepath)) === false) {
             throw new \RuntimeException(sprintf('Unable to read content of resource %s', $filepath));
         }
 
@@ -77,7 +77,7 @@ class Mime
         # Nginx and Apache basically share the same syntax.
         foreach(explode("\n", $content) as $rawline) {
             $rawline = trim($rawline, "; \t\n\r\0\x0B");
-            if(empty($rawline) or $rawline[0] == '#') continue;
+            if(empty($rawline) || $rawline[0] == '#') continue;
 
             $extensions = preg_split('/[\s]+/', $rawline);
             $mime = $extensions[0];
