@@ -5,9 +5,9 @@
 Comprehensive MIME type mapping API, PHP clone of [broofa/node-mime](https://github.com/broofa/node-mime). MIME database from [jshttp/mime-db](https://github.com/jshttp/mime-db).
 
 ## Data sources
-This library uses the mime-db repository. The updates can be automatically pulled from their repository, using `bin/pull-mime-db.php [out] [--with-apache]`.
+This library uses the mime-db repository. The updates are automatically pulled from their repository, using `bin/pull-mime-db.php [out] [--with-apache]`.
 
-By default this library exposes merged Nginx (**75** mimes) and mime-db "custom types" (**38** usable mimes) and extensions. Those are the most commons types of the Internet. The library also includes the Apache types. A lot of Apache types are, in most part, useless and they are very numerous (**765** usable mimes), so, in order to reduce the memory impact, Apache types are not loaded by default.
+By default this library exposes merged nginx (**75** mimes) and mime-db "custom types" (**38** usable mimes) and extensions. Those are the most commons types of the Internet. The library also includes the Apache types. A lot of Apache types are, in most part, useless and they are very numerous (**765** usable mimes), so, in order to reduce the memory impact, Apache types are not loaded by default.
 
 ## Install
 
@@ -54,7 +54,7 @@ Mime::extension('application/octet-stream');  # => 'bin'
 ### Mime::$defaultExtension
 The extension returned when `Mime::extension` fails to find the type searched for (**warning**, default is `null`).
 
-## API — Defining Custom Types
+## API — Defining Types
 
 Custom type mappings can be added on a per-project basis via the following APIs.
 
@@ -89,3 +89,7 @@ If the file couldn't be loaded (wrong path or insufficient privileges), it throw
 Mime::load('./my_project.types');
 ```
 The Apache .types file or the Nginx `types` block format is simple — see the [examples](/examples) directory for examples.
+
+### Mime::apacheExtend()
+
+Loads the packaged database of merged mime-db+nginx+Apache MIME types and extensions. The basic database (mime-db+nginx) is loaded by default and weighs roughly 8 KiB, when the all-in-one database loaded by this method weighs more than 70 KiB.
