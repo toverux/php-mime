@@ -9,6 +9,19 @@ $sources = [
     'https://raw.githubusercontent.com/jshttp/mime-db/master/src/nginx-types.json',
     'https://raw.githubusercontent.com/jshttp/mime-db/master/src/custom-types.json'
 ];
+$apacheSource = 'https://raw.githubusercontent.com/jshttp/mime-db/master/src/apache-types.json';
+
+array_shift($argv);
+foreach($argv as $arg) {
+    switch($arg) {
+        case '--with-apache':
+            $sources[] = $apacheSource;
+            break;
+        default:
+            $dest = __DIR__.'/../'.$arg;
+            break;
+    }
+}
 
 $nExtensionLess = $nExtension = 0;
 $e2m = $m2e = [];

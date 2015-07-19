@@ -4,7 +4,9 @@ namespace Alembic\Mime;
 
 class Mime
 {
-    const DBPATH = __DIR__.'/mimedb.php';
+    const DBPATH = __DIR__.'/mimedb.basic.php';
+
+    const DBPATH_EXTENDED = __DIR__.'/mimedb.extended.php';
 
     public static $dbLoaded = false;
 
@@ -89,9 +91,14 @@ class Mime
         self::define($m2e);
     }
 
-    protected static function loadDatabase()
+    public static function apacheExtend()
     {
-        $datas = require self::DBPATH;
+        self::loadDatabase(self::DBPATH_EXTENDED);
+    }
+
+    protected static function loadDatabase($dbpath = self::DBPATH)
+    {
+        $datas = require $dbpath;
         self::$m2e = &$datas[0];
         self::$e2m = &$datas[1];
 
