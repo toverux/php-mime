@@ -16,7 +16,7 @@ Install via [Composer](https://getcomposer.org/):
 use Alembic\Mime\Mime;
 ~~~
 
-**Note:** All the methods exposed below can be called statically or with an instance of the `Mime` class (better practice in DI environments). Please note that, even when using instance calls, the MIMEs database is shared because it is static.
+**Note:** All the methods exposed below can be called statically or with an instance of the `Mime` class (more practical in DI environments). Please note that, even when using instance calls, the MIMEs database is shared because it is static.
 
 
 ## API — Queries
@@ -59,9 +59,9 @@ Add custom mime/extension mappings.
 
 ```php
 Mime::define([
-    'text/x-some-format': ['x-sf', 'x-sft', 'x-sfml'],
-    'application/x-my-type': ['x-mt', 'x-mtt'],
-    'application/x-my-format': 'x-mf', # string allowed for unique ext
+    'text/x-some-format'      => ['x-sf', 'x-sft', 'x-sfml'],
+    'application/x-my-type'   => ['x-mt', 'x-mtt'],
+    'application/x-my-format' => 'x-mf', # string allowed for unique ext
     # etc ...
 ]);
 
@@ -78,9 +78,9 @@ Mime::extension('text/x-some-format');  # => 'x-sf'
 
 Load mappings from an Apache ".types" file or a Nginx file containing a `types` block. The format (Nginx or Apache) is automagically detected based on the content.
 Since the library uses `file_get_contents()`, the `$filepath` argument could be a filesystem path, an FTP path, an URL, whatever.
-If the file couldn't be loaded (wrong path or insufficient privileges), it throws a `\RuntimeException`;
+If the file couldn't be loaded (wrong path or insufficient privileges), it throws a `\RuntimeException`.
 
 ```php
 Mime::load('./my_project.types');
 ```
-The Apache .types file or the Nginx `types` block format is simple -  See the [examples](/examples) directory for examples.
+The Apache .types file or the Nginx `types` block format is simple — see the [examples](/examples) directory for examples.
