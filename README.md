@@ -7,7 +7,7 @@ Comprehensive MIME type mapping API, PHP clone of [broofa/node-mime](https://git
 ## Data sources
 This library uses the mime-db repository. The updates can be automatically pulled from their repository, using `bin/pull-mime-db.php [out] [--with-apache]`.
 
-By default this library exposes merged Nginx (**75** mimes) and mime-db "custom types" (**38** useable mimes) and extensions. Those are the most commons types of the Internet. The library also includes the Apache types. A lot of Apache types are, in most part, useless and they are very numerous (**765** useable mimes), so, in order to reduce the memory impact, Apache types are not loaded by default.
+By default this library exposes merged Nginx (**75** mimes) and mime-db "custom types" (**38** usable mimes) and extensions. Those are the most commons types of the Internet. The library also includes the Apache types. A lot of Apache types are, in most part, useless and they are very numerous (**765** usable mimes), so, in order to reduce the memory impact, Apache types are not loaded by default.
 
 ## Install
 
