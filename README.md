@@ -9,14 +9,10 @@ This library uses the mime-db repository. The updates are automatically pulled f
 
 By default this library exposes merged nginx (**75** mimes) and mime-db "custom types" (**38** usable mimes) and extensions. Those are the most commons types of the Internet. The library also includes the Apache types. A lot of Apache types are, in most part, useless and they are very numerous (**765** usable mimes), so, in order to reduce the memory impact, Apache types are not loaded by default.
 
-## Install
-
-Install via [Composer](https://getcomposer.org/):
+## Install & Usage
 
     composer install alembic/mime
     
-## Usage
-
 ~~~php
 use Alembic\Mime\Mime;
 ~~~
