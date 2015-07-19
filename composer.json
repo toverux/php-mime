@@ -3,6 +3,7 @@
     "description": "Just a port of npm's mime package",
     "type": "library",
     "license": "MIT",
+    "keywords": ["mime", "extension", "mapping"],
     "authors": [
         {
             "name": "toverux",
