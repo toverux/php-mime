@@ -14,18 +14,18 @@ By default this library exposes merged nginx (**75** mimes) and mime-db "custom 
 ## Install & Usage
 
     composer install alembic/mime
-    
-~~~php
+
+```php
 use Alembic\Mime\Mime;
-~~~
+```
 
 **Note:** All the methods exposed below can be called statically or with an instance of the `Mime` class (more practical in DI environments). Please note that, even when using instance calls, the MIMEs database is shared because it is static.
 
 
 ## API — Queries
 
-### Mime::lookup($path)
-Get the mime type associated with a file, if no mime type is found `application/octet-stream` is returned. Performs a case-insensitive lookup using the extension in `$path` (the substring after the last '.').  E.g.
+### Mime::lookup($path [, $fallback])
+Get the mime type associated with a file, if no mime type is found `$fallback` (`Mime::$defaultType` by default, which is `application/octet-stream`) is returned. Performs a case-insensitive lookup using the extension in `$path` (the substring after the last '.').  E.g.
 
 ```php
 use Alembic\Mime\Mime;
@@ -34,6 +34,8 @@ Mime::lookup('/path/to/file.txt');         # => 'text/plain'
 Mime::lookup('file.txt');                  # => 'text/plain'
 Mime::lookup('.TXT');                      # => 'text/plain'
 Mime::lookup('htm');                       # => 'text/html'
+Mime::lookup('unknown');                   # => 'application/octet-stream'
+Mime::lookup('unknown', null);             # => null
 # Instance mode:
 (new Mime)->lookup('folder/file');         # => 'application/octet-stream'
 ```

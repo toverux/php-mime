@@ -14,17 +14,40 @@ class Mime
 
     protected static $e2m = [];
 
+    /**
+     * @api
+     * @var mixed Mime fallback when an extension is not found.
+     */
     public static $defaultType = 'application/octet-stream';
 
+    /**
+     * @api
+     * @var mixed Extension fallback when a mime type is not found.
+     */
     public static $defaultExtension = null;
 
 
-    public static function lookup($path)
+    /**
+     * Lookup a mime type based on extension.
+     * $path could be:
+     *  - "dir/file.ext"
+     *  - "file.ext"
+     *  - ".EXT"
+     *  - "ext"
+     * @api
+     * @param string $path
+     * @param string $fallback If the extension cannot be found.
+     *                         Defaulting to $defaultType.
+     * @return string
+     */
+    public static function lookup($path, $fallback = false)
     {
+        if($fallback === false) $fallback = self::$defaultType;
+
         if(($pos = strrpos($path, '.')) !== false) {
             $ext = substr($path, $pos+1);
         } elseif(($pos = strrpos($path, '/')) !== false) {
-            return self::$defaultType;
+            return $fallback;
         } else {
             $ext = $path;
         }
@@ -35,9 +58,16 @@ class Mime
 
         return isset(self::$e2m[$ext])
                    ? self::$e2m[$ext]
-                   : self::$defaultType;
+                   : $fallback;
     }
 
+    /**
+     * Lookup an extension based on mime type.
+     *
+     * @api
+     * @param string $type
+     * @return string
+     */
     public static function extension($type)
     {
         if(!self::$dbLoaded) self::loadDatabase();
@@ -47,6 +77,13 @@ class Mime
                    : self::$defaultExtension;
     }
 
+    /**
+     * Defines new mime types and related extensions.
+     *
+     * @api
+     * @param array $m2e Assoc array of format [mime=>[ext1, ext2, ...]]
+     * @return void
+     */
     public static function define(array $m2e)
     {
         foreach($m2e as $mime => $extensions) {
@@ -62,6 +99,14 @@ class Mime
         }
     }
 
+    /**
+     * Loads an Apache .types file or a Nginx file
+     * containing a types block.
+     *
+     * @api
+     * @param string $filepath The resource path or URL
+     * @return void
+     */
     public static function load($filepath)
     {
         if(($content = @file_get_contents($filepath)) === false) {
@@ -91,11 +136,24 @@ class Mime
         self::define($m2e);
     }
 
+    /**
+     * Loads the extended database containing the Apache
+     * types (hundreds of supplementary entries).
+     *
+     * @api
+     * @return void
+     */
     public static function apacheExtend()
     {
         self::loadDatabase(self::DBPATH_EXTENDED);
     }
 
+    /**
+     * Loads a PHP-Mime PHP database.
+     *
+     * @param string $dbpath
+     * @return void
+     */
     protected static function loadDatabase($dbpath = self::DBPATH)
     {
         $datas = require $dbpath;

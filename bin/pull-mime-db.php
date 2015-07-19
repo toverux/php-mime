@@ -3,7 +3,7 @@
 
 const eol = PHP_EOL;
 
-$dest = __DIR__.'/../src/mimedb.php';
+$dest = __DIR__.'/../src/mimedb.basic.php';
 
 $sources = [
     'https://raw.githubusercontent.com/jshttp/mime-db/master/src/nginx-types.json',
