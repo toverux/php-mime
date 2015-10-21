@@ -2,7 +2,6 @@
 
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/e9103654-845f-40b7-8eeb-009e49e09067.svg?style=flat-square&label=insight)](https://insight.sensiolabs.com/projects/e9103654-845f-40b7-8eeb-009e49e09067)
 [![Packagist (Composer)](https://img.shields.io/packagist/v/alembic/mime.svg?style=flat-square)](https://packagist.org/packages/alembic/mime)
-[![Packagist (Composer)](https://img.shields.io/packagist/dt/alembic/mime.svg?style=flat-square)](https://packagist.org/packages/alembic/mime)
 ![MIT License](https://img.shields.io/packagist/l/alembic/mime.svg?style=flat-square)
 
 Comprehensive MIME type mapping API, PHP clone of [broofa/node-mime](https://github.com/broofa/node-mime). MIME database from [jshttp/mime-db](https://github.com/jshttp/mime-db).
@@ -14,7 +13,7 @@ By default this library exposes merged nginx (**75** mimes) and mime-db "custom 
 
 ## Install & Usage
 
-    composer install alembic/mime
+    composer require alembic/mime
 
 ```php
 use Alembic\Mime\Mime;
