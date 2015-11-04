@@ -11,6 +11,8 @@ This library uses the mime-db repository. The updates are automatically pulled f
 
 By default this library exposes merged nginx (**75** mimes) and mime-db "custom types" (**38** usable mimes) and extensions. Those are the most commons types of the Internet. The library also includes the Apache types. A lot of Apache types are, in most part, useless and they are very numerous (**765** usable mimes), so, in order to reduce the memory impact, Apache types are not loaded by default.
 
+If you're searching for a library with more options and features, check [hoaproject/Mime](https://github.com/hoaproject/Mime). If you need something simple, this library is for you ! For example, this library is perfect to implement a HTTP server that serves static files with a mime type based on the extension - since MIME scanning is too slow.
+
 ## Install & Usage
 
     composer require alembic/mime
