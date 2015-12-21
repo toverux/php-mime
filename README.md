@@ -9,7 +9,7 @@ Comprehensive MIME type mapping API, PHP clone of [broofa/node-mime](https://git
 ## Data sources
 This library uses the mime-db repository. The updates are automatically pulled from their repository, using `bin/pull-mime-db.php [out] [--with-apache]`.
 
-By default this library exposes merged nginx (**75** mimes) and mime-db "custom types" (**38** usable mimes) and extensions. Those are the most commons types of the Internet. The library also includes the Apache types. A lot of Apache types are, in most part, useless and they are very numerous (**765** usable mimes), so, in order to reduce the memory impact, Apache types are not loaded by default.
+By default this library exposes merged nginx + mime-db "custom types" (**116** usable mimes) and extensions. Those are the most commons types of the Internet. The library also includes the Apache types. A lot of Apache types are, in most part, useless and they are very numerous (**881** usable mimes), so, in order to reduce the memory footprint, Apache types are not loaded by default.
 
 If you're searching for a library with more options and features, check [hoaproject/Mime](https://github.com/hoaproject/Mime). If you need something simple, this library is for you ! For example, this library is perfect to implement a HTTP server that serves static files with a mime type based on the extension - since MIME scanning is too slow.
 
@@ -94,4 +94,4 @@ The Apache .types file or the Nginx `types` block format is simple — see the [
 
 ### Mime::apacheExtend()
 
-Loads the packaged database of merged mime-db+nginx+Apache MIME types and extensions. The basic database (mime-db+nginx) is loaded by default and weighs roughly 8 KiB, when the all-in-one database loaded by this method weighs more than 70 KiB.
+Loads the packaged database of merged mime-db+nginx+Apache MIME types and extensions. The basic database (mime-db+nginx) is loaded by default and weighs 8 KiB, when the all-in-one database loaded by this method weighs 70 KiB.
